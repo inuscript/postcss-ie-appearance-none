@@ -1,0 +1,35 @@
+{
+  "name": "postcss-ie-appearance-none",
+  "version": "0.0.0",
+  "description": "PostCSS plugin append -ms-expand and -ms-check alternative appearance: none.",
+  "keywords": [
+    "postcss",
+    "css",
+    "postcss-plugin",
+    "ie"
+  ],
+  "author": "inuscript <inuscript@gmail.com>",
+  "license": "MIT",
+  "repository": "inuscript/postcss-ie-appearance-none",
+  "bugs": {
+    "url": "https://github.com/inuscript/postcss-ie-appearance-none/issues"
+  },
+  "homepage": "https://github.com/inuscript/postcss-ie-appearance-none",
+  "dependencies": {
+    "postcss": "^5.2.6"
+  },
+  "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-config-postcss": "^2.0.2",
+    "jest": "^18.0.0"
+  },
+  "scripts": {
+    "test": "jest && eslint *.js"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-postcss/es5",
+    "env": {
+      "jest": true
+    }
+  }
+}
