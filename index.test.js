@@ -1,19 +1,29 @@
-var postcss = require('postcss');
+const postcss = require('postcss');
 
-var plugin = require('./');
+const plugin = require('./');
 
 function run(input, output, opts) {
-  return postcss([ plugin(opts) ]).process(input)
-    .then(result => {
-        expect(result.css).toEqual(output);
-        expect(result.warnings().length).toBe(0);
-    });
+    return postcss([ plugin(opts) ]).process(input)
+        .then(result => {
+            expect(result.css).toEqual(output);
+            expect(result.warnings().length).toBe(0);
+        });
 }
 
-/* Write tests here
 
 it('does something', () => {
-    return run('a{ }', 'a{ }', { });
+    const css = `
+    select.mySelect{
+        appearance: none;
+    }
+    `
+    const expect = `
+    select.mySelect{
+        appearance: none;
+    }
+    select.mySelect::--ms-expand{
+        display: none;
+    }
+    `
+    return run(css, expect);
 });
-
-*/
