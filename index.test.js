@@ -31,6 +31,26 @@ it('append ms-expand', () => {
     `;
     return run(input, expect);
 });
+
+it.only('append ms-expand2', () => {
+    const input = `
+    select.mySelect, .fooItem.bazItem .beeItem{
+        appearance: none;
+    }
+    `;
+
+    const expect = `
+    select.mySelect, .fooItem.bazItem .beeItem{
+        appearance: none;
+    }
+    select.mySelect::--ms-expand,
+    .fooItem.bazItem .beeItem::--ms-expand,
+    .fooItem.bazItem .beeItem::--ms-check {
+        display: none;
+    }
+    `;
+    return run(input, expect);
+});
 it('append ms-check', () => {
     const input = `
     input.myCheckbox{
@@ -43,6 +63,26 @@ it('append ms-check', () => {
         appearance: none;
     }
     select.mySelect::--ms-check{
+        display: none;
+    }
+    `;
+    return run(input, expect);
+});
+it('append both', () => {
+    const input = `
+    .mySomeFormItem{
+        appearance: none;
+    }
+    `;
+
+    const expect = `
+    .mySomeFormItem{
+        appearance: none;
+    }
+    .mySomeFormItem::--ms-expand{
+        display: none;
+    }
+    .mySomeFormItem::--ms-check{
         display: none;
     }
     `;
