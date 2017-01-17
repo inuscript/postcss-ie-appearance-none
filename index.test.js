@@ -4,20 +4,20 @@ const perfectionist = require('perfectionist');
 const plugin = require('./');
 
 function sanitizeCss(cssString) {
-    return perfectionist.process(cssString)
+    return perfectionist.process(cssString);
 }
 
 function run(input, output, opts) {
     return postcss([ plugin(opts) ]).process(input)
         .then( result => {
             return Promise.all([
+                result,
                 sanitizeCss(result.css),
                 sanitizeCss(output)
-            ])
+            ]);
         })
-        .then( ([inputCss, outputCss]) => {
-            console.log(inputCss, outputCss)
-            expect(inputCss.css).toEqual(outputCss.css)
+        .then( ([result, inputCss, outputCss]) => {
+            expect(inputCss.css).toEqual(outputCss.css);
             expect(result.warnings().length).toBe(0);
         });
 }
@@ -42,15 +42,20 @@ it('append ms-expand', () => {
 
 it('append ms-expand2', () => {
     const input = `
-    select.mySelect, .fooItem.bazItem .beeItem{
+    select.mySelect,
+    input .myInput,
+    .fooItem.bazItem .beeItem{
         appearance: none;
     }
     `;
 
     const expect = `
-    select.mySelect, input .myInput, .fooItem.bazItem .beeItem{
+    select.mySelect,
+    input .myInput,
+    .fooItem.bazItem .beeItem{
         appearance: none;
     }
+
     select.mySelect::--ms-expand,
     input .myInput::--ms-check,
     .fooItem.bazItem .beeItem::--ms-expand,
