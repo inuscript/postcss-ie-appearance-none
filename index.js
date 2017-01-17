@@ -16,12 +16,12 @@ module.exports = postcss.plugin('postcss-ie-appearance-none', function (opts) {
             const node = postcss.rule({
                 selector: `${selector}::--ms-expand`,
             })
-            node.append({
-                display: "none"
-            })
+            node.append(postcss.decl({
+                prop: "display",
+                value: "none"
+            }))
 
             const rule = root.insertAfter(decl.parent, node)
-            console.log(rule)
         })
 
     };
