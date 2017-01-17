@@ -9,20 +9,20 @@ module.exports = postcss.plugin('postcss-ie-appearance-none', function (opts) {
 
         // Transform CSS AST here
         root.walkDecls('appearance', decl => {
-            if(decl.value !== "none"){ // skip
-                return
+            if (decl.value !== 'none') { // skip
+                return;
             }
-            const selector = decl.parent.selector
+            const selector = decl.parent.selector;
             const node = postcss.rule({
-                selector: `${selector}::--ms-expand`,
-            })
+                selector: `${selector}::--ms-expand`
+            });
             node.append(postcss.decl({
-                prop: "display",
-                value: "none"
-            }))
+                prop: 'display',
+                value: 'none'
+            }));
 
-            const rule = root.insertAfter(decl.parent, node)
-        })
+            const rule = root.insertAfter(decl.parent, node);
+        });
 
     };
 });

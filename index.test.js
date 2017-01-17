@@ -11,7 +11,7 @@ function run(input, output, opts) {
 }
 
 function sanitizeCss(cssString) {
-    return cssString.replace(/(\s)/g, "")
+    return cssString.replace(/(\s)/g, '');
 }
 
 it('does something', () => {
@@ -19,7 +19,7 @@ it('does something', () => {
     select.mySelect{
         appearance: none;
     }
-    `
+    `;
 
     const expect = `
     select.mySelect{
@@ -28,6 +28,6 @@ it('does something', () => {
     select.mySelect::--ms-expand{
         display: none;
     }
-    `
+    `;
     return run(input, expect);
 });
