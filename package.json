@@ -22,14 +22,15 @@
   "devDependencies": {
     "eslint": "^3.12.2",
     "eslint-config-postcss": "^2.0.2",
-    "jest": "^18.0.0"
+    "jest": "^18.0.0",
+    "perfectionist": "^2.4.0"
   },
   "scripts": {
-    "lint": "eslint ./*.js --fix",
+    "lint": "eslint *.js --fix",
     "test": "jest && eslint *.js"
   },
   "eslintConfig": {
-    "extends": "eslint-config-postcss/es5",
+    "extends": "eslint-config-postcss",
     "env": {
       "jest": true
     }

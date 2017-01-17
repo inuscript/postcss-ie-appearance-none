@@ -3,13 +3,13 @@ const postcss = require('postcss');
 const plugin = require('./');
 
 function sanitizeCss(cssString) {
-    return cssString.replace(/(\s)/g, '');
+    return postcss().process(cssString)
 }
 
 function run(input, output, opts) {
     return postcss([ plugin(opts) ]).process(input)
         .then(result => {
-            expect(sanitizeCss(result.css)).toEqual(sanitizeCss(output));
+            expect(result.css).toEqual(sanitizeCss(output))
             expect(result.warnings().length).toBe(0);
         });
 }
@@ -32,7 +32,7 @@ it('append ms-expand', () => {
     return run(input, expect);
 });
 
-it.only('append ms-expand2', () => {
+it('append ms-expand2', () => {
     const input = `
     select.mySelect, .fooItem.bazItem .beeItem{
         appearance: none;
@@ -40,10 +40,11 @@ it.only('append ms-expand2', () => {
     `;
 
     const expect = `
-    select.mySelect, .fooItem.bazItem .beeItem{
+    select.mySelect, input .myInput, .fooItem.bazItem .beeItem{
         appearance: none;
     }
     select.mySelect::--ms-expand,
+    input .myInput::--ms-check,
     .fooItem.bazItem .beeItem::--ms-expand,
     .fooItem.bazItem .beeItem::--ms-check {
         display: none;
@@ -62,7 +63,7 @@ it('append ms-check', () => {
     input.myCheckbox{
         appearance: none;
     }
-    select.mySelect::--ms-check{
+    input.myCheckbox::--ms-check{
         display: none;
     }
     `;
@@ -79,10 +80,7 @@ it('append both', () => {
     .mySomeFormItem{
         appearance: none;
     }
-    .mySomeFormItem::--ms-expand{
-        display: none;
-    }
-    .mySomeFormItem::--ms-check{
+    .mySomeFormItem::--ms-expand, .mySomeFormItem::--ms-check{
         display: none;
     }
     `;
