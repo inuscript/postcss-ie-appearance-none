@@ -1,6 +1,6 @@
 # PostCSS Ie Appearance None [![Build Status][ci-img]][ci]
 
-[PostCSS] PostCSS plugin append `--ms-expand` and `--ms-check` alternative `appearance: none`.
+[PostCSS] PostCSS plugin append `-ms-expand` and `-ms-check` alternative `appearance: none`.
 
 [PostCSS]: https://github.com/postcss/postcss
 [ci-img]:  https://travis-ci.org/inuscript/postcss-ie-appearance-none.svg
@@ -25,7 +25,7 @@ select.mySelect {
     appearance: none;
 }
 
-.foo::--ms-expand, .foo::--ms-check {
+.foo::-ms-expand, .foo::-ms-check {
     display: none;
 }
 
@@ -33,7 +33,7 @@ input.myInput {
     appearance: none;
 }
 
-input.myInput::--ms-check {
+input.myInput::-ms-check {
     display: none;
 }
 
@@ -41,7 +41,7 @@ select.mySelect {
     appearance: none;
 }
 
-select.mySelect::--ms-expand {
+select.mySelect::-ms-expand {
     display: none;
 }
 

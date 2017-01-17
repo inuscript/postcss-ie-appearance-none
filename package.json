@@ -1,7 +1,7 @@
 {
   "name": "postcss-ie-appearance-none",
   "version": "0.0.0",
-  "description": "PostCSS plugin append --ms-expand and --ms-check alternative appearance: none.",
+  "description": "PostCSS plugin append -ms-expand and -ms-check alternative appearance: none.",
   "keywords": [
     "postcss",
     "css",

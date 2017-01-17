@@ -17,10 +17,10 @@ const hasInput = (nodes) =>
         node.type === 'tag' && node.value === 'input' ).length > 0;
 
 const appendExpand = (nodes) =>
-    nodes.append( parser.pseudo({ value: '::--ms-expand' }) );
+    nodes.append( parser.pseudo({ value: '::-ms-expand' }) );
 
 const appendCheck = (nodes) =>
-    nodes.append( parser.pseudo({ value: '::--ms-check' }) );
+    nodes.append( parser.pseudo({ value: '::-ms-check' }) );
 
 
 const convertSelector = (input) => {

@@ -36,7 +36,7 @@ it('append ms-expand', () => {
     select.mySelect{
         appearance: none;
     }
-    select.mySelect::--ms-expand{
+    select.mySelect::-ms-expand{
         display: none;
     }
     `;
@@ -59,10 +59,10 @@ it('append ms-expand2', () => {
         appearance: none;
     }
 
-    select.mySelect::--ms-expand,
-    input .myInput::--ms-check,
-    .fooItem.bazItem .beeItem::--ms-expand,
-    .fooItem.bazItem .beeItem::--ms-check {
+    select.mySelect::-ms-expand,
+    input .myInput::-ms-check,
+    .fooItem.bazItem .beeItem::-ms-expand,
+    .fooItem.bazItem .beeItem::-ms-check {
         display: none;
     }
     `;
@@ -79,7 +79,7 @@ it('append ms-check', () => {
     input.myCheckbox{
         appearance: none;
     }
-    input.myCheckbox::--ms-check{
+    input.myCheckbox::-ms-check{
         display: none;
     }
     `;
@@ -96,7 +96,7 @@ it('append both', () => {
     .mySomeFormItem{
         appearance: none;
     }
-    .mySomeFormItem::--ms-expand, .mySomeFormItem::--ms-check{
+    .mySomeFormItem::-ms-expand, .mySomeFormItem::-ms-check{
         display: none;
     }
     `;
@@ -123,7 +123,7 @@ it('readme example', () => {
         appearance: none;
     }
 
-    .foo::--ms-expand, .foo::--ms-check {
+    .foo::-ms-expand, .foo::-ms-check {
         display: none;
     }
 
@@ -131,7 +131,7 @@ it('readme example', () => {
         appearance: none;
     }
 
-    input.myInput::--ms-check {
+    input.myInput::-ms-check {
         display: none;
     }
 
@@ -139,7 +139,7 @@ it('readme example', () => {
         appearance: none;
     }
 
-    select.mySelect::--ms-expand {
+    select.mySelect::-ms-expand {
         display: none;
     }
     `;
