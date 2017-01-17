@@ -1,15 +1,23 @@
 const postcss = require('postcss');
+const perfectionist = require('perfectionist');
 
 const plugin = require('./');
 
 function sanitizeCss(cssString) {
-    return postcss().process(cssString)
+    return perfectionist.process(cssString)
 }
 
 function run(input, output, opts) {
     return postcss([ plugin(opts) ]).process(input)
-        .then(result => {
-            expect(result.css).toEqual(sanitizeCss(output))
+        .then( result => {
+            return Promise.all([
+                sanitizeCss(result.css),
+                sanitizeCss(output)
+            ])
+        })
+        .then( ([inputCss, outputCss]) => {
+            console.log(inputCss, outputCss)
+            expect(inputCss.css).toEqual(outputCss.css)
             expect(result.warnings().length).toBe(0);
         });
 }
