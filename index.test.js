@@ -7,18 +7,21 @@ function sanitizeCss(cssString) {
     return perfectionist.process(cssString);
 }
 
+function expectResult(input, output) {
+    expect(input.css).toEqual(output.css);
+}
+
 function run(input, output, opts) {
     return postcss([ plugin(opts) ]).process(input)
         .then( result => {
+            expect(result.warnings().length).toBe(0);
             return Promise.all([
-                result,
                 sanitizeCss(result.css),
                 sanitizeCss(output)
             ]);
         })
-        .then( ([result, inputCss, outputCss]) => {
-            expect(inputCss.css).toEqual(outputCss.css);
-            expect(result.warnings().length).toBe(0);
+        .then( (results) => {
+            expectResult(results[0], results[1]);
         });
 }
 
