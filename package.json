@@ -6,7 +6,10 @@
     "postcss",
     "css",
     "postcss-plugin",
-    "ie"
+    "ie",
+    "appearance",
+    "ms-expand",
+    "ms-check"
   ],
   "files": [
     "index.js"
