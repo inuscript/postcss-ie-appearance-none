@@ -1,6 +1,6 @@
 # PostCSS Ie Appearance None [![Build Status][ci-img]][ci]
 
-[PostCSS] PostCSS plugin append `-ms-expand` and `-ms-check` alternative `appearance: none`.
+[PostCSS] PostCSS plugin append `-ms-expand` and `-ms-check` ( for IE 10+ ) alternative `appearance: none`.
 
 [PostCSS]: https://github.com/postcss/postcss
 [ci-img]:  https://travis-ci.org/inuscript/postcss-ie-appearance-none.svg
