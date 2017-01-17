@@ -1,11 +1,9 @@
 const postcss = require('postcss');
 
-module.exports = postcss.plugin('postcss-ie-appearance-none', function (opts) {
-    opts = opts || {};
-
+module.exports = postcss.plugin('postcss-ie-appearance-none', function () {
     // Work with options here
 
-    return function (root, result) {
+    return function (root) {
 
         // Transform CSS AST here
         root.walkDecls('appearance', decl => {
@@ -21,7 +19,7 @@ module.exports = postcss.plugin('postcss-ie-appearance-none', function (opts) {
                 value: 'none'
             }));
 
-            const rule = root.insertAfter(decl.parent, node);
+            root.insertAfter(decl.parent, node);
         });
 
     };
