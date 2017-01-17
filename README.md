@@ -6,6 +6,20 @@
 [ci-img]:  https://travis-ci.org/inuscript/postcss-ie-appearance-none.svg
 [ci]:      https://travis-ci.org/inuscript/postcss-ie-appearance-none
 
+## Install
+
+```
+$ npm install postcss-ie-appearance-none
+```
+
+or
+
+```
+$ yarn add -D postcss-ie-appearance-none
+```
+
+## Example
+
 ```css
 .foo {
     appearance: none;
