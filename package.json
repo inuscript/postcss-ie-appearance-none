@@ -8,6 +8,9 @@
     "postcss-plugin",
     "ie"
   ],
+  "files": [
+    "index.js"
+  ],
   "author": "inuscript <inuscript@gmail.com>",
   "license": "MIT",
   "repository": "inuscript/postcss-ie-appearance-none",
