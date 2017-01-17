@@ -1,5 +1,5 @@
 const postcss = require('postcss');
-
+const parser = require('postcss-selector-parser')
 const createRule = (selector, prefix) => {
     const node = postcss.rule({
         selector: `${selector}::--ms-${prefix}`
@@ -9,8 +9,23 @@ const createRule = (selector, prefix) => {
         value: 'none'
     }));
     return node;
-
 };
+
+const hasSelect = (selector) => {
+    const b = parser( (selector) => {
+        console.log(selector.nodes[0].nodes[0])
+        return selector
+    }).process(selector)
+}
+
+const appendRule = (root, decl, prefix) => {
+    const selector = decl.parent.selector
+    hasSelect(selector)
+
+    root.insertAfter(decl.parent, createRule(decl.parent.selector, "expand"))
+    // root.insertAfter(decl, createRule(decl.parent.selector, "check"))
+}
+
 module.exports = postcss.plugin('postcss-ie-appearance-none', function () {
     // Work with options here
 
@@ -21,8 +36,7 @@ module.exports = postcss.plugin('postcss-ie-appearance-none', function () {
             if (decl.value !== 'none') { // skip
                 return;
             }
-            const node = createRule(decl.parent.selector, 'expand');
-            root.insertAfter(decl.parent, node);
+            appendRule(root, decl);
         });
 
     };

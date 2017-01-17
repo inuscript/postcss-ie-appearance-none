@@ -16,7 +16,8 @@
   },
   "homepage": "https://github.com/inuscript/postcss-ie-appearance-none",
   "dependencies": {
-    "postcss": "^5.2.6"
+    "postcss": "^5.2.6",
+    "postcss-selector-parser": "^2.2.2"
   },
   "devDependencies": {
     "eslint": "^3.12.2",

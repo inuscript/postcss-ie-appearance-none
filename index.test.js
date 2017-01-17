@@ -14,7 +14,7 @@ function run(input, output, opts) {
         });
 }
 
-it('does something', () => {
+it('append ms-expand', () => {
     const input = `
     select.mySelect{
         appearance: none;
@@ -26,6 +26,23 @@ it('does something', () => {
         appearance: none;
     }
     select.mySelect::--ms-expand{
+        display: none;
+    }
+    `;
+    return run(input, expect);
+});
+it('append ms-check', () => {
+    const input = `
+    input.myCheckbox{
+        appearance: none;
+    }
+    `;
+
+    const expect = `
+    input.myCheckbox{
+        appearance: none;
+    }
+    select.mySelect::--ms-check{
         display: none;
     }
     `;
