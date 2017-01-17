@@ -102,3 +102,46 @@ it('append both', () => {
     `;
     return run(input, expect);
 });
+
+it('readme example', () => {
+    const input = `
+    .foo {
+        appearance: none;
+    }
+
+    input.myInput {
+        appearance: none;
+    }
+
+    select.mySelect {
+        appearance: none;
+    }
+    `;
+
+    const expect = `
+    .foo {
+        appearance: none;
+    }
+
+    .foo::--ms-expand, .foo::--ms-check {
+        display: none;
+    }
+
+    input.myInput {
+        appearance: none;
+    }
+
+    input.myInput::--ms-check {
+        display: none;
+    }
+
+    select.mySelect {
+        appearance: none;
+    }
+
+    select.mySelect::--ms-expand {
+        display: none;
+    }
+    `;
+    return run(input, expect);
+});
