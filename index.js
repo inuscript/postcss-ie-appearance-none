@@ -13,9 +13,15 @@ module.exports = postcss.plugin('postcss-ie-appearance-none', function (opts) {
                 return
             }
             const selector = decl.parent.selector
-            decl.parent.insertAfter({
-                display: none
+            const node = postcss.rule({
+                selector: `${selector}::--ms-expand`,
             })
+            node.append({
+                display: "none"
+            })
+
+            const rule = root.insertAfter(decl.parent, node)
+            console.log(rule)
         })
 
     };
