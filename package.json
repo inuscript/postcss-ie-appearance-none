@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/inuscript/postcss-ie-appearance-none",
   "dependencies": {
-    "postcss": "^5.2.6",
+    "postcss": "^6.0.1",
     "postcss-selector-parser": "^2.2.2"
   },
   "devDependencies": {
